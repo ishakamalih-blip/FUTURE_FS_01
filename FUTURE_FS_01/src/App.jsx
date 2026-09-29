@@ -1,653 +1,762 @@
+import React from "react";
 import "./App.css";
 
+const skills = [
+  "HTML5",
+  "CSS3",
+  "JavaScript",
+  "React",
+  "Vite",
+  "Node.js",
+  "Express.js",
+  "PHP",
+  "CodeIgniter",
+  "MySQL",
+  "MongoDB",
+  "Git & GitHub",
+];
+
+const projects = [
+  {
+    number: "01",
+    title: "Personal Portfolio",
+    description:
+      "A modern and responsive portfolio website designed to showcase my skills, projects and professional journey.",
+    technologies: ["React", "Vite", "CSS"],
+  },
+  {
+    number: "02",
+    title: "Full Stack Web Application",
+    description:
+      "A responsive web application built with modern frontend and backend technologies with a focus on usability and clean design.",
+    technologies: ["JavaScript", "Node.js", "MongoDB"],
+  },
+  {
+    number: "03",
+    title: "Citizen Service System",
+    description:
+      "A digital citizen service platform developed during my internship to simplify online certificate application and processing.",
+    technologies: ["PHP", "CodeIgniter", "MySQL"],
+  },
+];
+
 function App() {
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    const form = new FormData(e.target);
+
+    const name = form.get("name");
+    const email = form.get("email");
+    const subject = form.get("subject");
+    const message = form.get("message");
+
+    const mailBody = `
+Hello Isha,
+
+Name: ${name}
+Email: ${email}
+
+Message:
+${message}
+`;
+
+    window.location.href =
+      `mailto:ishakamalih@gmail.com?subject=${encodeURIComponent(
+        subject
+      )}&body=${encodeURIComponent(mailBody)}`;
+  };
+
   return (
     <div className="portfolio">
 
       {/* ================= NAVBAR ================= */}
-      <nav className="navbar">
-        <div className="logo">
-          ISHA<span>.</span>
-        </div>
 
-        <div className="nav-links">
-          <a href="#home">Home</a>
-          <a href="#about">About</a>
-          <a href="#skills">Skills</a>
-          <a href="#projects">Projects</a>
-          <a href="#experience">Experience</a>
-          <a href="#contact">Contact</a>
-        </div>
+      <header className="navbar">
 
-        <a href="#contact" className="nav-btn">
-          Let's Talk
+        <a href="#home" className="logo">
+          <span>✦</span> ISHA
         </a>
-      </nav>
+
+        <nav className="nav-links">
+
+          <a href="#home">Home</a>
+
+          <a href="#about">About</a>
+
+          <a href="#skills">Skills</a>
+
+          <a href="#projects">Projects</a>
+
+          <a href="#contact">Contact</a>
+
+        </nav>
+
+        <a href="#contact" className="nav-button">
+          Let's Talk <span>↗</span>
+        </a>
+
+      </header>
 
 
       {/* ================= HERO ================= */}
-      <section id="home" className="hero">
 
-        <div className="hero-content">
+      <main id="home">
 
-          <p className="small-heading">
-            HELLO, I'M ISHA 👋
-          </p>
+        <section className="hero">
 
-          <h1>
-            Computer Engineering
-            <br />
-            <span>Student & Web Developer</span>
-          </h1>
+          <div className="hero-content">
 
-          <p className="hero-description">
-            B.Tech Computer Engineering student with hands-on experience
-            in web development, Android application development,
-            frontend technologies, prompt engineering and data handling.
-          </p>
+            <div className="eyebrow">
 
-          <div className="hero-buttons">
+              <span className="line"></span>
 
-            <a href="#projects" className="primary-btn">
-              View My Work →
-            </a>
+              HELLO, I'M
 
-            <a
-              href="/Isha_Kamalia_Resume.pdf"
-              target="_blank"
-              rel="noreferrer"
-              className="secondary-btn"
-            >
-              📄 View Resume
-            </a>
-
-          </div>
-
-        </div>
-
-
-        {/* CODE CARD */}
-        <div className="hero-card">
-
-          <div className="code-card">
-
-            <div className="code-top">
-              <span></span>
-              <span></span>
-              <span></span>
             </div>
 
-            <pre>
-{`const developer = {
-  name: "Isha Kamalia",
-  role: "Web Developer",
-  education: "B.Tech CE",
-  cgpa: "8.9",
-  university: "UTU",
-  passion: "Building"
-};`}
-            </pre>
 
-          </div>
+            <h1>
 
-        </div>
+              Isha
 
-      </section>
+              <span>Kamalia</span>
+
+            </h1>
 
 
-      {/* ================= ABOUT ================= */}
-      <section id="about" className="section">
-
-        <div className="section-title">
-
-          <p>ABOUT ME</p>
-
-          <h2>
-            Turning Ideas Into Digital Experiences
-          </h2>
-
-        </div>
+            <h2>
+              Full Stack Web Developer
+            </h2>
 
 
-        <div className="about-content">
+            <p className="hero-description">
 
-          <div className="about-box">
+              B.Tech Computer Engineering student passionate about
+              creating modern, responsive and user-friendly web
+              applications with clean design and meaningful
+              functionality.
 
-            <h3>
-              Who I Am
-            </h3>
-
-            <p>
-              I am Isha Kamalia, a B.Tech Computer Engineering student
-              at UKA TARSADIA University.
             </p>
 
-            <p>
-              I have hands-on experience in web development, Android
-              application development, frontend technologies,
-              prompt engineering and data handling.
-            </p>
 
-            <p>
-              I enjoy creating responsive user interfaces and
-              implementing logical solutions for real-world problems.
-            </p>
+            <div className="hero-buttons">
 
-          </div>
+              <a
+                href="#projects"
+                className="primary-button"
+              >
+                View My Work
+                <span>↗</span>
+              </a>
 
 
-          <div className="about-stats">
+              <a
+                href="#contact"
+                className="outline-button"
+              >
+                Contact Me
+              </a>
 
-            <div className="stat">
-              <h3>8.9</h3>
-              <p>CGPA</p>
             </div>
 
-            <div className="stat">
-              <h3>2027</h3>
-              <p>Graduation</p>
-            </div>
 
-            <div className="stat">
-              <h3>03</h3>
-              <p>Major Projects</p>
-            </div>
+            {/* SOCIAL LINKS */}
 
-            <div className="stat">
-              <h3>01+</h3>
-              <p>Internship</p>
+            <div className="social-links">
+
+              <a
+                href="https://github.com/ishakamalih-blip"
+                target="_blank"
+                rel="noreferrer"
+              >
+                GitHub
+              </a>
+
+
+              <a
+                href="https://www.linkedin.com/in/isha-kamalia-b57030358"
+                target="_blank"
+                rel="noreferrer"
+              >
+                LinkedIn
+              </a>
+
+
+              <a href="mailto:ishakamalih@gmail.com">
+                Email
+              </a>
+
             </div>
 
           </div>
 
-        </div>
 
-      </section>
+          {/* ================= PROFILE ================= */}
 
+          <div className="hero-visual">
 
-      {/* ================= SKILLS ================= */}
-      <section id="skills" className="section skills-section">
+            <div className="shape shape-one"></div>
 
-        <div className="section-title">
+            <div className="shape shape-two"></div>
 
-          <p>MY SKILLS</p>
-
-          <h2>
-            Technologies I Work With
-          </h2>
-
-        </div>
+            <div className="shape shape-three"></div>
 
 
-        <div className="skills-grid">
+            <div className="profile-card">
 
-          <div className="skill-card">
+              <div className="profile-image-wrapper">
 
-            <span>01</span>
+                <img
+                  src="/profile.jpg"
+                  alt="Isha Kamalia"
+                  className="profile-photo"
+                />
 
-            <h3>
-              Programming
-            </h3>
+              </div>
 
-            <p>
-              PHP · JavaScript · HTML · CSS
-            </p>
-
-          </div>
+            </div>
 
 
-          <div className="skill-card">
-
-            <span>02</span>
-
-            <h3>
-              Frontend
-            </h3>
-
-            <p>
-              HTML · CSS · JavaScript · UI/UX
-            </p>
-
-          </div>
+            <div className="floating-star star-one">
+              ✦
+            </div>
 
 
-          <div className="skill-card">
+            <div className="floating-star star-two">
+              ✦
+            </div>
 
-            <span>03</span>
 
-            <h3>
-              Database
-            </h3>
+            <div className="quote-card">
 
-            <p>
-              MySQL · MongoDB · Data Mining Tools
-            </p>
+              <span>Dream</span>
+
+              <span>Build</span>
+
+              <span>Grow ♡</span>
+
+            </div>
 
           </div>
 
-
-          <div className="skill-card">
-
-            <span>04</span>
-
-            <h3>
-              Development Tools
-            </h3>
-
-            <p>
-              Git · GitHub · VS Code · Android Studio · BLACKBOX AI
-            </p>
-
-          </div>
-
-        </div>
-
-      </section>
+        </section>
 
 
-      {/* ================= PROJECTS ================= */}
-      <section id="projects" className="section">
+        {/* ================= ABOUT ================= */}
 
-        <div className="section-title">
+        <section
+          id="about"
+          className="section about-section"
+        >
 
-          <p>MY WORK</p>
+          <div className="section-heading">
 
-          <h2>
-            Featured Projects
-          </h2>
-
-        </div>
-
-
-        <div className="projects-grid">
-
-
-          {/* PROJECT 1 */}
-          <div className="project-card">
-
-            <div className="project-number">
+            <span className="section-number">
               01
-            </div>
+            </span>
 
-            <h3>
-              Destiny AI
-            </h3>
 
-            <p>
-              An AI-driven platform that provides personalized
-              compatibility insights based on user inputs and
-              intelligent prompts. The project focuses on dynamic
-              input-based analysis and an interactive responsive UI.
-            </p>
+            <div>
 
-            <div className="project-tags">
+              <p className="section-label">
+                ABOUT ME
+              </p>
 
-              <span>HTML</span>
-              <span>CSS</span>
-              <span>JavaScript</span>
-              <span>AI</span>
 
-            </div>
+              <h2>
 
-            <div className="project-buttons">
+                Turning Ideas Into
 
-              <a
-                href="https://github.com/ishakamalih-blip"
-                target="_blank"
-                rel="noreferrer"
-                className="project-btn"
-              >
-                GitHub ↗
-              </a>
+                <span>
+                  {" "}Digital Experiences
+                </span>
+
+              </h2>
 
             </div>
 
           </div>
 
 
-          {/* PROJECT 2 */}
-          <div className="project-card">
+          <div className="about-grid">
 
-            <div className="project-number">
+            <div className="about-main">
+
+              <p className="large-text">
+
+                I am a Computer Engineering student with
+                a strong interest in Full Stack Development,
+                modern UI design and innovative technologies.
+
+              </p>
+
+
+              <p>
+
+                I enjoy transforming ideas into responsive,
+                interactive and meaningful digital experiences.
+                I am continuously learning new technologies
+                and improving my development skills through
+                projects, internships and hands-on experiences.
+
+              </p>
+
+            </div>
+
+
+            <div className="about-box">
+
+              <div className="about-box-icon">
+                ✦
+              </div>
+
+
+              <h3>
+
+                Curious by Nature.
+
+                <br />
+
+                Creative by Design.
+
+              </h3>
+
+
+              <p>
+
+                Always learning. Always building.
+
+              </p>
+
+            </div>
+
+          </div>
+
+        </section>
+
+
+        {/* ================= SKILLS ================= */}
+
+        <section
+          id="skills"
+          className="section skills-section"
+        >
+
+          <div className="section-heading">
+
+            <span className="section-number">
               02
-            </div>
+            </span>
 
-            <h3>
-              Anna on Wheels
-            </h3>
-
-            <p>
-              An Android food ordering application developed with
-              Java, MySQL and Android Studio. It includes menu
-              browsing, order tracking, payment workflow and
-              database-backed order management.
-            </p>
-
-            <div className="project-tags">
-
-              <span>Java</span>
-              <span>MySQL</span>
-              <span>Android Studio</span>
-
-            </div>
-
-            <div className="project-buttons">
-
-              <a
-                href="https://github.com/ishakamalih-blip"
-                target="_blank"
-                rel="noreferrer"
-                className="project-btn"
-              >
-                GitHub ↗
-              </a>
-
-            </div>
-
-          </div>
-
-
-          {/* PROJECT 3 */}
-          <div className="project-card">
-
-            <div className="project-number">
-              03
-            </div>
-
-            <h3>
-              Sugam Citizen Service
-            </h3>
-
-            <p>
-              A citizen service portal developed during my NIC
-              internship for digitalizing the Income Certificate
-              process with responsive interfaces, service modules
-              and database integration.
-            </p>
-
-            <div className="project-tags">
-
-              <span>PHP</span>
-              <span>CodeIgniter 4</span>
-              <span>MySQL</span>
-              <span>Bootstrap</span>
-
-            </div>
-
-            <div className="project-buttons">
-
-              <a
-                href="https://github.com/ishakamalih-blip"
-                target="_blank"
-                rel="noreferrer"
-                className="project-btn"
-              >
-                GitHub ↗
-              </a>
-
-            </div>
-
-          </div>
-
-        </div>
-
-      </section>
-
-
-      {/* ================= EXPERIENCE ================= */}
-      <section
-        id="experience"
-        className="section experience-section"
-      >
-
-        <div className="section-title">
-
-          <p>EXPERIENCE</p>
-
-          <h2>
-            My Professional Journey
-          </h2>
-
-        </div>
-
-
-        <div className="timeline">
-
-          <div className="timeline-item">
-
-            <div className="timeline-dot"></div>
 
             <div>
 
-              <span>
-                05/2026 – 07/2026
-              </span>
-
-              <h3>
-                Web Development Intern
-              </h3>
-
-              <h4>
-                National Informatics Centre (NIC)
-              </h4>
-
-              <p>
-                Developed the Sugam Citizen Service Portal using
-                PHP (CodeIgniter 4), HTML, CSS, JavaScript,
-                Bootstrap and MySQL.
+              <p className="section-label">
+                MY SKILLS
               </p>
 
-              <p>
-                Designed responsive and user-friendly web interfaces,
-                implemented citizen service modules, worked with
-                secure database integration and participated in
-                testing, debugging and performance optimization.
-              </p>
+
+              <h2>
+
+                Technologies I
+
+                <span>
+                  {" "}Work With
+                </span>
+
+              </h2>
 
             </div>
 
           </div>
 
 
-          <div className="timeline-item">
+          <div className="skills-grid">
 
-            <div className="timeline-dot"></div>
+            {skills.map((skill, index) => (
+
+              <div
+                className="skill-card"
+                key={skill}
+              >
+
+                <span className="skill-index">
+
+                  {String(index + 1).padStart(2, "0")}
+
+                </span>
+
+
+                <span className="skill-name">
+
+                  {skill}
+
+                </span>
+
+
+                <span className="skill-arrow">
+                  ↗
+                </span>
+
+              </div>
+
+            ))}
+
+          </div>
+
+        </section>
+
+
+        {/* ================= PROJECTS ================= */}
+
+        <section
+          id="projects"
+          className="section projects-section"
+        >
+
+          <div className="projects-heading">
+
+            <div className="section-heading">
+
+              <span className="section-number">
+                03
+              </span>
+
+
+              <div>
+
+                <p className="section-label">
+                  MY WORK
+                </p>
+
+
+                <h2>
+
+                  Featured
+
+                  <span>
+                    {" "}Projects
+                  </span>
+
+                </h2>
+
+              </div>
+
+            </div>
+
+
+            <p className="project-intro">
+
+              Real solutions.
+
+              <br />
+
+              Practical skills.
+
+              <br />
+
+              Built with passion.
+
+            </p>
+
+          </div>
+
+
+          <div className="projects-grid">
+
+            {projects.map((project) => (
+
+              <article
+                className="project-card"
+                key={project.number}
+              >
+
+                <div className="project-top">
+
+                  <span className="project-number">
+                    {project.number}
+                  </span>
+
+
+                  <span className="project-symbol">
+                    ↗
+                  </span>
+
+                </div>
+
+
+                <div className="project-content">
+
+                  <h3>
+                    {project.title}
+                  </h3>
+
+
+                  <p>
+                    {project.description}
+                  </p>
+
+
+                  <div className="tags">
+
+                    {project.technologies.map(
+                      (tech) => (
+
+                        <span key={tech}>
+                          {tech}
+                        </span>
+
+                      )
+                    )}
+
+                  </div>
+
+                </div>
+
+              </article>
+
+            ))}
+
+          </div>
+
+        </section>
+
+
+        {/* ================= CONTACT ================= */}
+
+        <section
+          id="contact"
+          className="contact-section"
+        >
+
+          <div className="contact-heading">
+
+            <span className="section-number">
+              04
+            </span>
+
 
             <div>
 
-              <span>
-                2026
-              </span>
-
-              <h3>
-                Full Stack Web Development Intern
-              </h3>
-
-              <h4>
-                Future Interns
-              </h4>
-
-              <p>
-                Working on practical full-stack web development
-                projects involving frontend development, backend
-                integration, databases, GitHub and real-world
-                business workflows.
+              <p className="section-label">
+                GET IN TOUCH
               </p>
+
+
+              <h2>
+
+                Let's Work
+
+                <span>
+                  {" "}Together
+                </span>
+
+              </h2>
 
             </div>
 
           </div>
 
-        </div>
 
-      </section>
-
-
-      {/* ================= CERTIFICATIONS ================= */}
-      <section className="section">
-
-        <div className="section-title">
-
-          <p>
-            CERTIFICATIONS & ACHIEVEMENTS
-          </p>
-
-          <h2>
-            Learning & Growth
-          </h2>
-
-        </div>
+          <div className="contact-grid">
 
 
-        <div className="skills-grid">
+            {/* CONTACT INFORMATION */}
+
+            <div className="contact-info">
+
+              <p className="contact-big-text">
+
+                Have a project idea,
+                internship opportunity
+                or just want to connect?
+
+              </p>
 
 
-          <div className="skill-card">
+              <p>
 
-            <span>01</span>
+                I'd love to hear from you.
+                Send me a message and let's
+                create something meaningful
+                together.
 
-            <h3>
-              AWS Academy
-            </h3>
-
-            <p>
-              AWS Academy Graduate — Cloud Foundations.
-            </p>
-
-          </div>
+              </p>
 
 
-          <div className="skill-card">
+              <div className="contact-details">
 
-            <span>02</span>
+                <a href="mailto:ishakamalih@gmail.com">
 
-            <h3>
-              NIC Internship
-            </h3>
+                  <span>
+                    EMAIL
+                  </span>
 
-            <p>
-              Web Development Internship Completion Certificate
-              from National Informatics Centre.
-            </p>
+                  ishakamalih@gmail.com
 
-          </div>
+                </a>
 
 
-          <div className="skill-card">
+                <a
+                  href="https://github.com/ishakamalih-blip"
+                  target="_blank"
+                  rel="noreferrer"
+                >
 
-            <span>03</span>
+                  <span>
+                    GITHUB
+                  </span>
 
-            <h3>
-              AI Project
-            </h3>
+                  github.com/ishakamalih-blip
 
-            <p>
-              Developed an AI-assisted compatibility analysis
-              system providing personalized insights.
-            </p>
-
-          </div>
-
-
-          <div className="skill-card">
-
-            <span>04</span>
-
-            <h3>
-              Responsive UI
-            </h3>
-
-            <p>
-              Designed responsive and interactive user interfaces
-              focused on user experience.
-            </p>
-
-          </div>
-
-        </div>
-
-      </section>
+                </a>
 
 
-      {/* ================= CONTACT ================= */}
-      <section
-        id="contact"
-        className="section contact-section"
-      >
+                <a
+                  href="https://www.linkedin.com/in/isha-kamalia-b57030358"
+                  target="_blank"
+                  rel="noreferrer"
+                >
 
-        <div className="section-title">
+                  <span>
+                    LINKEDIN
+                  </span>
 
-          <p>
-            GET IN TOUCH
-          </p>
+                  linkedin.com/in/isha-kamalia-b57030358
 
-          <h2>
-            Let's Build Something Together
-          </h2>
+                </a>
 
-        </div>
+              </div>
 
-
-        <div className="contact-box">
-
-          <div>
-
-            <h3>
-              Have a project or opportunity?
-            </h3>
-
-            <p>
-              I am open to internships, collaborations and
-              opportunities where I can apply my technical skills
-              and continue learning.
-            </p>
-
-          </div>
+            </div>
 
 
-          <div className="contact-links">
+            {/* CONTACT FORM */}
 
-            <a href="mailto:ishakamalih@gmail.com">
-              📧 Email Me
-            </a>
-
-            <a
-              href="https://github.com/ishakamalih-blip"
-              target="_blank"
-              rel="noreferrer"
+            <form
+              className="contact-form"
+              onSubmit={handleSubmit}
             >
-              💻 GitHub
-            </a>
 
-            <a
-              href="https://www.linkedin.com/in/isha-kamalia-b57030358"
-              target="_blank"
-              rel="noreferrer"
-            >
-              🔗 LinkedIn
-            </a>
+              <div className="input-row">
 
-            <a
-              href="/Isha_Kamalia_Resume.pdf"
-              target="_blank"
-              rel="noreferrer"
-            >
-              📄 View Resume
-            </a>
+                <div className="input-group">
+
+                  <label>
+                    Your Name
+                  </label>
+
+
+                  <input
+                    type="text"
+                    name="name"
+                    placeholder="Enter your name"
+                    required
+                  />
+
+                </div>
+
+
+                <div className="input-group">
+
+                  <label>
+                    Your Email
+                  </label>
+
+
+                  <input
+                    type="email"
+                    name="email"
+                    placeholder="Enter your email"
+                    required
+                  />
+
+                </div>
+
+              </div>
+
+
+              <div className="input-group">
+
+                <label>
+                  Subject
+                </label>
+
+
+                <input
+                  type="text"
+                  name="subject"
+                  placeholder="What would you like to discuss?"
+                  required
+                />
+
+              </div>
+
+
+              <div className="input-group">
+
+                <label>
+                  Your Message
+                </label>
+
+
+                <textarea
+                  name="message"
+                  placeholder="Write your message..."
+                  rows="6"
+                  required
+                ></textarea>
+
+              </div>
+
+
+              <button
+                type="submit"
+                className="send-button"
+              >
+
+                Send Message
+
+                <span>
+                  ↗
+                </span>
+
+              </button>
+
+            </form>
 
           </div>
 
-        </div>
+        </section>
 
-      </section>
+      </main>
 
 
       {/* ================= FOOTER ================= */}
-      <footer>
+
+      <footer className="footer">
+
+        <div className="footer-logo">
+
+          <span>✦</span> ISHA.
+
+        </div>
+
 
         <p>
-          © 2026 Isha Kamalia. Designed & Developed with passion.
+
+          © 2026 Isha Kamalia.
+          Built with React & Vite.
+
         </p>
+
+
+        <a href="#home">
+
+          Back to top ↑
+
+        </a>
 
       </footer>
 
